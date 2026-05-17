@@ -11,15 +11,19 @@ export default function TeaserPage() {
   const [guideCount, setGuideCount] = useState(0);
   const [travelerCount, setTravelerCount] = useState(0);
 
+  // ガイド用ステート
   const [gName, setGName] = useState('');
   const [gEmail, setGEmail] = useState('');
   const [gCat, setGCat] = useState('');
+  const [gAgree, setGAgree] = useState(false);
   const [isGuideSubmitted, setIsGuideSubmitted] = useState(false);
   const [isSubmittingGuide, setIsSubmittingGuide] = useState(false);
 
+  // 旅行者用ステート
   const [tName, setTName] = useState('');
   const [tEmail, setTEmail] = useState('');
   const [tInterest, setTInterest] = useState('');
+  const [tAgree, setTAgree] = useState(false);
   const [isTravelerSubmitted, setIsTravelerSubmitted] = useState(false);
   const [isSubmittingTraveler, setIsSubmittingTraveler] = useState(false);
 
@@ -79,6 +83,10 @@ export default function TeaserPage() {
       alert('お名前とメールアドレスを入力してください。');
       return;
     }
+    if (!gAgree) {
+      alert('利用規約とプライバシーポリシーへの同意が必要です。');
+      return;
+    }
     setIsSubmittingGuide(true);
 
     try {
@@ -108,6 +116,10 @@ export default function TeaserPage() {
     e.preventDefault();
     if (!tName || !tEmail) {
       alert('Please enter your name and email.');
+      return;
+    }
+    if (!tAgree) {
+      alert('You must agree to the Terms and Privacy Policy.');
       return;
     }
     setIsSubmittingTraveler(true);
@@ -200,11 +212,20 @@ export default function TeaserPage() {
         .perk-check.coral { background: var(--coral-light); color: var(--coral); }
         .perk-check.blue { background: var(--blue-light); color: var(--blue); }
         .reg-form { display: flex; flex-direction: column; gap: 9px; }
-        .reg-form input, .reg-form select { width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 10px; font-size: 13.5px; font-family: inherit; color: var(--text); background: var(--white); outline: none; transition: border-color .2s; -webkit-appearance: none; }
-        .reg-form input::placeholder { color: var(--text3); }
+        .reg-form input[type="text"], .reg-form input[type="email"], .reg-form select { width: 100%; padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 10px; font-size: 13.5px; font-family: inherit; color: var(--text); background: var(--white); outline: none; transition: border-color .2s; -webkit-appearance: none; }
+        .reg-form input[type="text"]::placeholder, .reg-form input[type="email"]::placeholder { color: var(--text3); }
         .reg-form input.g:focus { border-color: var(--coral); }
         .reg-form input.t:focus { border-color: var(--blue); }
         .reg-form select { cursor: pointer; }
+        
+        /* 同意チェックボックスのスタイル */
+        .agree-label { display: flex; align-items: flex-start; gap: 8px; font-size: 11.5px; color: var(--text2); margin: 6px 0 12px; cursor: pointer; line-height: 1.5; font-family: 'Noto Sans JP', sans-serif; }
+        .agree-label input { margin-top: 2px; width: 14px; height: 14px; cursor: pointer; }
+        .agree-label.g input { accent-color: var(--coral); }
+        .agree-label.t input { accent-color: var(--blue); }
+        .agree-label a { color: var(--text); text-decoration: underline; font-weight: 600; }
+        .agree-label a:hover { color: var(--coral); }
+        
         .submit-btn { width: 100%; padding: 13px; border: none; border-radius: 12px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; transition: opacity .2s, transform .2s; margin-top: 4px; }
         .submit-btn:hover { opacity: 0.88; transform: translateY(-1px); }
         .submit-btn.guide { background: var(--text); color: #fff; }
@@ -400,6 +421,12 @@ export default function TeaserPage() {
                   <option>🧘 禅・マインドフルネス</option>
                   <option>その他</option>
                 </select>
+                
+                <label className="agree-label g">
+                  <input type="checkbox" checked={gAgree} onChange={(e) => setGAgree(e.target.checked)} required />
+                  <span><Link href="/terms" target="_blank">利用規約</Link>と<Link href="/privacy" target="_blank">プライバシーポリシー</Link>に同意する</span>
+                </label>
+                
                 <button type="submit" disabled={isSubmittingGuide} className="submit-btn guide">
                   {isSubmittingGuide ? '送信中...' : 'ガイドとして事前登録する →'}
                 </button>
@@ -441,6 +468,12 @@ export default function TeaserPage() {
                   <option>🧘 Zen / Mindfulness</option>
                   <option>Other</option>
                 </select>
+                
+                <label className="agree-label t">
+                  <input type="checkbox" checked={tAgree} onChange={(e) => setTAgree(e.target.checked)} required />
+                  <span>I agree to the <Link href="/terms" target="_blank">Terms</Link> and <Link href="/privacy" target="_blank">Privacy Policy</Link>.</span>
+                </label>
+                
                 <button type="submit" disabled={isSubmittingTraveler} className="submit-btn traveler">
                   {isSubmittingTraveler ? 'Sending...' : 'Register as Traveler →'}
                 </button>
@@ -670,11 +703,10 @@ export default function TeaserPage() {
             <span style={{ fontSize: '15px', fontWeight: 800, color: 'var(--text)' }}>cocora</span>
           </div>
           <div className="footer-copy">© 2026 cocora Inc. All rights reserved.</div>
-<div className="footer-links">
+          <div className="footer-links">
             <Link href="/terms">利用規約</Link>
             <Link href="/privacy">プライバシー</Link>
-            {/* 💡 MEFARの公式サイトのお問い合わせページに別タブで飛ばします */}
-            <a href="https://mefar.jp/#contact" target="_blank" rel="noopener noreferrer">お問い合わせ</a>
+            <a href="https://mefar.jp/contact" target="_blank" rel="noopener noreferrer">お問い合わせ</a>
           </div>
         </div>
       </footer>
