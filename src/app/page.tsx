@@ -352,7 +352,7 @@ export default function TeaserPage() {
           <span className="logo-text">cocora</span>
         </div>
         <div className="nav-right">
-          <div className="launch-pill"><div className="launch-dot"></div>2025年 サービス開始予定</div>
+          <div className="launch-pill"><div className="launch-dot"></div>2026年 サービス開始予定</div>
           <button className="nav-btn" onClick={() => scrollToReg()}>事前登録する</button>
         </div>
       </nav>
@@ -361,7 +361,7 @@ export default function TeaserPage() {
         <div className="hero-tag">🇯🇵 ニッチな体験、本物の出会い</div>
         <h1>あなたの「好き」が<br /><span className="accent">旅を変える。</span></h1>
         <p className="hero-sub">一般の日本人と外国人旅行者をマッチング。ロードバイク、聖地巡礼、街歩き——共通の趣味を持つガイドと、特別な体験を。</p>
-        <p className="hero-launch">サービス開始は <strong>2025年を予定</strong>。今すぐ登録して先行スタートを。</p>
+        <p className="hero-launch">サービス開始は <strong>2026年を予定</strong>。今すぐ登録して先行スタートを。</p>
         <div className="hero-ctas">
           <button className="btn-dark" onClick={() => scrollToReg('guide')}>ガイドとして事前登録 →</button>
           <button className="btn-outline" onClick={() => scrollToReg('traveler')}>旅行者として事前登録</button>
@@ -675,7 +675,7 @@ export default function TeaserPage() {
           <div className="tl-step">
             <div className="tl-dot"></div>
             <div className="tl-label">ローンチ</div>
-            <div className="tl-sub">2025年<br />正式リリース</div>
+            <div className="tl-sub">2026年<br />正式リリース</div>
           </div>
           <div className="tl-step">
             <div className="tl-dot"></div>
