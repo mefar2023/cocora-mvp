@@ -1,46 +1,39 @@
+import type { Metadata } from 'next';
+import './globals.css'; // Next.jsの標準的なスタイルシートの読み込み
 
-import type { Metadata } from "next";
-import "./globals.css";
-
+// 🇯🇵 日本語版（大元）のタイトル・OGP設定
 export const metadata: Metadata = {
-  title: "cocora | Your Passion Changes the Journey",
-  description: "一般の日本人と外国人旅行者をマッチング。共通の趣味を持つガイドと特別な体験を。",
-  
-  // Google Search Console の所有権確認用設定
-  verification: {
-    google: "GVCotjER-FXwj1MOwURdMS5HvUJk2NhGfobFlnZY6ps",
-  },
-
-  // 👇 すべてのURLに www. を追加して厳密に一致させました！
+  title: 'cocora(ココラ) | あなたの「好き」が、旅を変える。',
+  description: '日本のローカルガイドと外国人旅行者をマッチング。同じ趣味を持つローカルガイドと、ロードバイク、アニメ聖地巡礼、ディープなグルメなど、特別な体験を。',
   openGraph: {
-    title: "cocora | Your Passion Changes the Journey",
-    description: "一般の日本人と外国人旅行者をマッチング。共通の趣味を持つガイドと特別な体験を。",
-    url: "https://www.cocora-travel.com", // 👈 www. を追加！
-    siteName: "cocora",
+    title: 'cocora(ココラ) | あなたの「好き」が、旅を変える。',
+    description: '日本のローカルガイドと外国人旅行者をマッチング。特別なローカル体験を。',
+    url: 'https://cocora-travel.com',
+    siteName: 'cocora',
+    locale: 'ja_JP',
+    type: 'website',
     images: [
       {
-        url: "https://www.cocora-travel.com/opengraph-image.png", // 👈 ここもフルURLで www. を追加！
+        url: '/ogp.png', // ※ /public/ogp.png が存在する場合に有効になります
         width: 1200,
         height: 630,
-        alt: "cocora OGP Image",
+        alt: 'cocora preview image',
       },
     ],
-    locale: "ja_JP",
-    type: "website",
   },
   twitter: {
-    card: "summary_large_image",
-    title: "cocora | Your Passion Changes the Journey",
-    description: "一般の日本人と外国人旅行者をマッチング。共通の趣味を持つガイドと特別な体験を。",
-    images: ["https://www.cocora-travel.com/opengraph-image.png"], // 👈 www. を追加！
+    card: 'summary_large_image',
+    title: 'cocora(ココラ) | あなたの「好き」が、旅を変える。',
+    description: '日本のローカルガイドと外国人旅行者をマッチング。',
   },
 };
 
+// 大元のレイアウト関数（1つだけに統一してエラーを解消）
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="ja">
       <body>
