@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
-
-// 👇 ここから下を丸ごと書き換えます！
 export const metadata: Metadata = {
   title: "cocora | Your Passion Changes the Journey",
   description: "一般の日本人と外国人旅行者をマッチング。共通の趣味を持つガイドと特別な体験を。",
+  
+  // 👇 Google Search Console の所有権確認用設定
+  verification: {
+    google: "GVCotjER-FXwj1MOwURdMS5HvUJk2NhGfobFlnZY6ps",
+  },
+
+  // 👇 SNSシェア（OGP）用の設定
   openGraph: {
     title: "cocora | Your Passion Changes the Journey",
     description: "一般の日本人と外国人旅行者をマッチング。共通の趣味を持つガイドと特別な体験を。",
@@ -15,7 +18,7 @@ export const metadata: Metadata = {
     siteName: "cocora",
     images: [
       {
-        url: "/opengraph-image.png", // 👈 ここで確実に画像を指名します！
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "cocora OGP Image",
@@ -39,7 +42,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={inter.className}>{children}</body>
+      <body>
+        {children}
+      </body>
     </html>
   );
 }
