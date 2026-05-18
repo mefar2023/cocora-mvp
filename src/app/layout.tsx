@@ -6,20 +6,29 @@ const inter = Inter({ subsets: ["latin"] });
 
 // 👇 ここから下を丸ごと書き換えます！
 export const metadata: Metadata = {
-  title: "cocora（ココラ）| ニッチな体験、本物の出会い",
-  description: "一般の日本人と外国人旅行者をマッチング。ロードバイク、聖地巡礼、街歩き——共通の趣味を持つガイドと、特別な体験を。2025年のサービス開始に向け、現在事前登録を受付中です。",
+  title: "cocora | Your Passion Changes the Journey",
+  description: "一般の日本人と外国人旅行者をマッチング。共通の趣味を持つガイドと特別な体験を。",
   openGraph: {
-    title: "cocora（ココラ）| ニッチな体験、本物の出会い",
-    description: "あなたの「好き」が旅を変える。外国人旅行者と趣味で繋がる新しい観光マッチングサービス、事前登録受付中！",
-    url: "https://mefar.jp", // 💡 本番公開時のURLが決まっていれば書き換えてください
+    title: "cocora | Your Passion Changes the Journey",
+    description: "一般の日本人と外国人旅行者をマッチング。共通の趣味を持つガイドと特別な体験を。",
+    url: "https://cocora-travel.com",
     siteName: "cocora",
+    images: [
+      {
+        url: "/opengraph-image.png", // 👈 ここで確実に画像を指名します！
+        width: 1200,
+        height: 630,
+        alt: "cocora OGP Image",
+      },
+    ],
     locale: "ja_JP",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "cocora（ココラ）| 事前登録受付中",
-    description: "あなたの「好き」が旅を変える。外国人旅行者と趣味で繋がる新しい観光マッチングサービス。",
+    title: "cocora | Your Passion Changes the Journey",
+    description: "一般の日本人と外国人旅行者をマッチング。共通の趣味を持つガイドと特別な体験を。",
+    images: ["/opengraph-image.png"],
   },
 };
 
